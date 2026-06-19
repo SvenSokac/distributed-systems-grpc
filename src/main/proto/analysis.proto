@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package analysis;
+
+option java_package = "analysis";
+option java_multiple_files = true;
+
+service AnalysisService {
+  rpc AnalyzeSensorData(SensorData) returns (AnalysisResult);
+}
+
+message SensorData {
+  double temperature = 1;
+  double pressure = 2;
+  double vibration = 3;
+  string timestamp = 4;
+}
+
+message AnalysisResult {
+  string status = 1;
+  string message = 2;
+}

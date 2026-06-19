@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package maintenance;
+
+option java_package = "maintenance";
+option java_multiple_files = true;
+
+service MaintenanceService {
+  rpc ManageReports(stream MaintenanceRequest) returns (stream MaintenanceResponse);
+}
+
+message MaintenanceRequest {
+  string reportId = 1;
+  string issueSummary = 2;
+  string location = 3;
+}
+
+message MaintenanceResponse {
+  string action = 1;
+  string technicianNote = 2;
+}

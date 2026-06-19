@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package sensor;
+
+option java_package = "sensor";
+option java_multiple_files = true;
+
+service SensorService {
+  rpc SensorStreamData(SensorRequest) returns (stream SensorData);
+}
+
+message SensorRequest {
+  int32 bridgeId = 1;
+}
+
+message SensorData {
+  double temperature = 1;
+  double pressure = 2;
+  double vibration = 3;
+  string timestamp = 4;
+}
